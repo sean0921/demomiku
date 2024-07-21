@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>MapLibre GL Basemaps Control</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href="https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.js"></script>
+
+<!--
+  <link href="lib/basemaps.css" rel="stylesheet">
+  <script src="lib/index.js"></script>
+-->
+
+  <script src="https://cdn.jsdelivr.net/npm/maplibre-gl-basemaps@0.1.2/lib/index.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl-basemaps@0.1.2/lib/basemaps.min.css">
+
+  <style>
+    html, body, #Map {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <script>
+    window.addEventListener("load", function() {
+      const map = new maplibregl.Map({
+        container: "Map",
+        attributionControl: false,
+        style: {
+          version: 8,
+          sources: {},
+          layers: []
+        }
+      });
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
+      map.addControl(
+        new MaplibreGLBasemapsControl(
+          {
+            basemaps: [
+              {
+                id: "OpenStreetMap",
+                tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                sourceExtraParams: {
+                  tileSize: 256,
+			attribution: 'Data &copy; <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a> <a href="https://www.openstreetmap.org/about" target="_blank">contributors</a>',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "OpenTopoMap",
+                tiles: [
+                  "https://a.tile.opentopomap.org/{z}/{x}/{y}.png",
+                  "https://b.tile.opentopomap.org/{z}/{x}/{y}.png",
+                  "https://c.tile.opentopomap.org/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; OpenTopoMap, &copy; SRTM, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "OSM Humanitarian",
+                tiles: [
+                  "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+                  "https://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+                  "https://c.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; OSM Humanitarian, &copy; OSM French, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "Carto Positron",
+                tiles: [
+                  "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                  "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                  "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; CARTO, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "Carto Positron Light",
+                tiles: [
+                  "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+                  "https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+                  "https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; CARTO, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "Carto Dark matter",
+                tiles: [
+                  "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                  "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                  "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; CARTO, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+              {
+                id: "Carto Dark Light",
+                tiles: [
+                  "https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+                  "https://b.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+                  "https://c.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
+                ],
+                sourceExtraParams: {
+                  tileSize: 256,
+                  attribution: '&copy; CARTO, &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> Contributors (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                  minzoom: 0,
+                  maxzoom: 22
+                }
+              },
+            ],
+            initialBasemap: "OpenStreetMap",
+            expandDirection: "top"
+          }),
+        "bottom-left"
+      );
+    });
+  </script>
+</head>
+<body>
+
+<div id="Map"></div>
+</body>
+</html>
