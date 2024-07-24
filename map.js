@@ -1,6 +1,6 @@
 var map = new maplibregl.Map({
   container: 'map',
-  style: 'https://straight-in-to-the-lights.geo.clam.tw/styles/MapTiler%20Toner/style.json', // Style URL; see our documentation for more options
+  style: 'https://straight-into-the-lights.geo.clam.tw/styles/MapTiler%20Toner/style.json', // Style URL; see our documentation for more options
   center: [121.5320921, 25.0675437], // Initial focus coordinate
   zoom: 8
 });
